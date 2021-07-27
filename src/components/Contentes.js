@@ -51,26 +51,36 @@ const Contents = () => {
 
       // console.log(userList[userList.length - 1].pets);
 
-      // var sortOption = {
-      //   name: true,
-      //   gender: true,
-      //   age: true,
-      //   pets: true,
-      // };
+      var sortOption = {
+        name: true,
+        gender: true,
+        age: true,
+        pets: true,
+      };
 
-      // function sort123(sortField) {
-      //   if (sortField) {
-      //     userList = userList.sort((a, b) =>
-      //       a.sortField < b.sortField ? -1 : a.sortField > b.sortField ? 1 : 0
-      //     );
-      //   } else {
-      //     userList = userList.sort((a, b) =>
-      //       a.sortField < b.sortField ? 1 : a.sortField > b.sortField ? -1 : 0
-      //     );
-      //   }
+      function sort123(sortField) {
+        if (sortOption[sortField]) {
+          userList = userList.sort((a, b) =>
+            a[sortField] < b[sortField]
+              ? -1
+              : a[sortField] > b[sortField]
+              ? 1
+              : 0
+          );
+        } else {
+          userList = userList.sort((a, b) =>
+            a[sortField] < b[sortField]
+              ? 1
+              : a[sortField] > b[sortField]
+              ? -1
+              : 0
+          );
+        }
 
-      //   renderTable(userList);
-      // }
+        sortOption[sortField] = !sortOption[sortField];
+
+        renderTable(userList);
+      }
 
       function renderTable(data) {
         var oTable = document.querySelector("table>tbody");
@@ -83,7 +93,10 @@ const Contents = () => {
           h.push(`<td>${item.name}</td>`);
 
           h.push(`<td>${item.pets}</td>`);
-          console.log(JSON.stringify(`${item.pets}`));
+          //console.log(Object.values(item.pets));
+          item.pets.forEach((element) => console.log(element.name));
+
+          h.push(`<td>${item.age}</td>`);
 
           h.push("</tr>");
         });
@@ -99,15 +112,19 @@ const Contents = () => {
 
   return (
     <section>
-      <h5>按照性别显示，字母名字列表</h5>
+      <h5>
+        need to write some code to consume the json and output a list of all the
+        cats in alphabetical order under a heading of the gender of their owner.
+      </h5>
       <div className='container'>
         <div>
-          <table class='table table-bordered table-sm'>
+          <table className='table table-bordered table-dark table-sm'>
             <thead>
               <tr>
                 <td>gender</td>
                 <td>name</td>
                 <td>pets</td>
+                <td>age</td>
               </tr>
             </thead>
             <tbody></tbody>
