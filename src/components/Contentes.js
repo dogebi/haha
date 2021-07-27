@@ -23,7 +23,7 @@ const Contents = () => {
       );
       //console.log(res.data);
       const userList = res.data;
-      console.log(arraySort(userList, "gender"));
+      console.log(arraySort(userList, "pets.name"));
 
       //console.log(arraySort(userList, "pets.name"));
       // console.log(JSON.stringify(userList[name]));
@@ -91,12 +91,17 @@ const Contents = () => {
 
           h.push(`<td>${item.gender}</td>`);
           h.push(`<td>${item.name}</td>`);
+          //item.pets.forEach((element) => h.push(`<td>${element.name}</td>`));
 
-          h.push(`<td>${item.pets}</td>`);
           //console.log(Object.values(item.pets));
-          item.pets.forEach((element) => console.log(element.name));
+          try {
+            item.pets.forEach((element) => h.push(`<td>${element.name}</td>`));
+            item.pets.forEach((element) => console.log(element.name));
+          } catch (error) {}
+          //item.pets.forEach((element) => console.log(element.name));
+          //h.push(`<td>${item.pets}</td>`);
 
-          h.push(`<td>${item.age}</td>`);
+          //h.push(`<td>${item.age}</td>`);
 
           h.push("</tr>");
         });
@@ -121,10 +126,9 @@ const Contents = () => {
           <table className='table table-bordered table-dark table-sm'>
             <thead>
               <tr>
-                <td>gender</td>
-                <td>name</td>
-                <td>pets</td>
-                <td>age</td>
+                <td>GENDER</td>
+                <td>NAME</td>
+                <td>PETS</td>
               </tr>
             </thead>
             <tbody></tbody>
