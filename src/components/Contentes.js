@@ -11,12 +11,20 @@ const Contents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       const res = await axios.get(
-        "https://cors-anywhere.herokuapp.com/https://5c92dbfae7b1a00014078e61.mockapi.io/owners"
+        "https://5c92dbfae7b1a00014078e61.mockapi.io/owners"
       );
       //console.log(res.data);
       var userList = res.data;
-      console.log(arraySort(userList, "pets.name"));
+      console.log(arraySort(userList, "gender"));
 
+      function shoot(sortField) {
+        alert([sortField]);
+        userList.sort((a, b) =>
+          a[sortField] < b[sortField] ? -1 : a[sortField] > b[sortField] ? 1 : 0
+        );
+      }
+      //shoot("pets.name");
+      console.log(userList);
       //console.log(arraySort(userList, "pets.name"));
       // console.log(JSON.stringify(userList[name]));
 
@@ -56,8 +64,8 @@ const Contents = () => {
 
           //console.log(Object.values(item.pets));
           try {
-            item.pets.forEach((element) => h.push(`<td>${element.name}</td>`));
-            item.pets.forEach((element) => console.log(element.name));
+            item.pets.forEach((element) => h.push(`<td>${element.type}</td>`));
+            item.pets.forEach((element) => console.log(element.type));
           } catch (error) {}
           //item.pets.forEach((element) => console.log(element.name));
           //h.push(`<td>${item.pets}</td>`);
@@ -106,6 +114,7 @@ const Contents = () => {
         need to write some code to consume the json and output a list of all the
         cats in alphabetical order under a heading of the gender of their owner.
       </p>
+
       <div className='container'>
         <div>
           <table className='table table-bordered table-dark table-hover table-sm'>
