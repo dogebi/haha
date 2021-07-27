@@ -23,7 +23,7 @@ const Contents = () => {
       );
       //console.log(res.data);
       const userList = res.data;
-      console.log(arraySort(userList, "name"));
+      console.log(arraySort(userList, "gender"));
 
       //console.log(arraySort(userList, "pets.name"));
       // console.log(JSON.stringify(userList[name]));
