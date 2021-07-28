@@ -25,8 +25,6 @@ const Contents = () => {
       }
       //shoot("pets.name");
       console.log(userList);
-      //console.log(arraySort(userList, "pets.name"));
-      // console.log(JSON.stringify(userList[name]));
 
       // function compare(prop) {
       //   return function (a, b) {
