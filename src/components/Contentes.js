@@ -9,9 +9,8 @@ const arraySort = require("array-sort"); //other fangfa
 const Contents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
-      const res = await axios.get(
-        "https://cors-anywhere.herokuapp.com/http://5c92dbfae7b1a00014078e61.mockapi.io/owners"
-      );
+      const res = await axios.get("/owners");
+      //"https://cors-anywhere.herokuapp.com/http://5c92dbfae7b1a00014078e61.mockapi.io/owners"
       //console.log(res.data);
       var userList = res.data;
       console.log(arraySort(userList, "gender"));
