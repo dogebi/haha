@@ -11,7 +11,7 @@ const Contents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       const res = await axios.get(
-        "https://5c92dbfae7b1a00014078e61.mockapi.io/owners"
+        "https //cors-anywhere.herokuapp.com/https://5c92dbfae7b1a00014078e61.mockapi.io/owners"
       );
       //console.log(res.data);
       var userList = res.data;
