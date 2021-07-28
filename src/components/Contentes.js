@@ -4,23 +4,23 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
+const cors = require("cors");
 const arraySort = require("array-sort"); //other fangfa
 
+var prop1 = "pets.name";
+
+// app.use(cors());
 const Contents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
-      const res = await axios.get("https://cors-anywhere.herokuapp.com/http://5c92dbfae7b1a00014078e61.mockapi.io/owners");
+      const res = await axios.get(
+        "https://cors-anywhere.herokuapp.com/http://5c92dbfae7b1a00014078e61.mockapi.io/owners"
+      );
       //"https://cors-anywhere.herokuapp.com/http://5c92dbfae7b1a00014078e61.mockapi.io/owners"
       //console.log(res.data);
       var userList = res.data;
-      console.log(arraySort(userList, "gender"));
+      console.log(arraySort(userList, prop1));
 
-      function shoot(sortField) {
-        alert([sortField]);
-        userList.sort((a, b) =>
-          a[sortField] < b[sortField] ? -1 : a[sortField] > b[sortField] ? 1 : 0
-        );
-      }
       //shoot("pets.name");
       console.log(userList);
 
@@ -58,11 +58,22 @@ const Contents = () => {
           h.push(`<td>${item.name}</td>`);
           //item.pets.forEach((element) => h.push(`<td>${element.name}</td>`));
 
-          //console.log(Object.values(item.pets));
           try {
-            item.pets.forEach((element) => h.push(`<td>${element.type}</td>`));
-            item.pets.forEach((element) => console.log(element.type));
+            item.pets.forEach((element) => {
+              console.log((element.type = "Cat"));
+              if ((element.type = "Cat")) {
+                h.push(`<td>${element.name}</td>`);
+              }
+            });
           } catch (error) {}
+
+          //console.log(Object.values(item.pets));
+          // try {
+          //   item.pets.forEach((element) =>
+          //     h.push(`<td>${(element.type = "Cat")}</td>`)
+          //   );
+          //   item.pets.forEach((element) => console.log(element.type));
+          // } catch (error) {}
           //item.pets.forEach((element) => console.log(element.name));
           //h.push(`<td>${item.pets}</td>`);
 
@@ -79,6 +90,15 @@ const Contents = () => {
 
     fetchEvents();
   }, []);
+
+  // function shoot() {
+  //   var prop1 = "pets.name";
+  //   alert(prop1);
+  //   return (prop1 = "pets.name");
+  //   // userList.sort((a, b) =>
+  //   //   a[sortField] < b[sortField] ? -1 : a[sortField] > b[sortField] ? 1 : 0
+  //   // );
+  // }
 
   var sortOption = {
     name: true,
