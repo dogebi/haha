@@ -136,9 +136,9 @@ const Contents = () => {
           <table className='table table-bordered table-dark table-hover table-sm'>
             <thead>
               <tr>
-                <td>GENDER</td>
+                <td>GENDER♂︎</td>
                 <td>NAME</td>
-                <td>PETS</td>
+                <td>PETS↓</td>
               </tr>
             </thead>
             <tbody></tbody>
